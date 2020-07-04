@@ -17,6 +17,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @restaurant = RestaurantsController::RESTAURANTS.find { |r| r[:id].to_s == params[:id] }
+    @orders = @restaurant[:orders]
   end
 
   private
