@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   end
 
   post 'owners/tables', to: 'owners#tables_create'
+  resources :owners, only: [:index, :create]
 
-  resources :orders, only: [:index, :create]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  post 'orders/check_code' => 'orders#check_code'
+  resources :orders, only: [:index, :show, :create]
+
   root to: 'welcome#index'
 end
