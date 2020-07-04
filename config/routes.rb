@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :customers, only: :index
+  resources :restaurants, only: :index do
+    get 'menu'
+  end
 
   resources :owners, only: [:index, :create]
   post 'owners/tables', to: 'owners#tables_create'

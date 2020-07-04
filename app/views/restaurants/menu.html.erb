@@ -1,0 +1,15 @@
+<div class="py-5">
+  <% @menu.each do |item| %>
+    <div class='card border-solid border-b border-gray-500 bg-gray-300 text-sm'>
+      <div class="mb-1">
+        <div class="text-gray-900 font-bold"><%= item[:name] %></div>
+      </div>
+      <div class="mb-2">
+        <div class="text-gray-800"><%= item[:description] %></div>
+      </div>
+      <div class="mb-1">
+        <div class="text-green-900 font-bold"><%= item[:value] %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
