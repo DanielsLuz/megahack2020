@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  FREE_TIME_SLOTS = ['10:00','11:00','11:30','13:00','13:30','17:00'].freeze
+
   def index
   end
 
@@ -20,6 +22,10 @@ class OrdersController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     @orders = [] # @restaurant.orders
+  end
+
+  def time_slots
+    @free_time_slots = FREE_TIME_SLOTS
   end
 
   private
