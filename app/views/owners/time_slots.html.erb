@@ -1,0 +1,11 @@
+<div class="py-5">
+  <% @free_time_slots.each do |time_slot| %>
+    <%= link_to restaurants_path(params: { time_slot: time_slot }), class: 'card border-solid border-b border-gray-500 bg-gray-300 text-sm' do %>
+      <div class="mb-1">
+        <div class="text-gray-900 font-bold">
+          <%= time_slot %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
