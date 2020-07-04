@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :owners, only: [:show, :create, :edit, :update] do
     get 'restaurants/:id', to: 'owners#show_restaurant', as: :restaurant
+    get 'restaurants', to: 'owners#new_restaurant'
     get 'time_slots', on: :collection
   end
 

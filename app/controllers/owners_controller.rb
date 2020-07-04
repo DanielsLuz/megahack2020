@@ -15,6 +15,10 @@ class OwnersController < ApplicationController
   def show_restaurant
   end
 
+  def new_restaurant
+    @restaurant = Restaurant.new
+  end
+
   def time_slots
     @free_time_slots = FREE_TIME_SLOTS
   end
