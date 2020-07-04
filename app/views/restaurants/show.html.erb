@@ -1,16 +1,45 @@
-<%= link_to new_restaurant_item_path(@restaurant.id) do %>
-  <div class="w-auto font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-    Cadastrar novo item
+<div class="h-screen w-full bg-blue-600 flex flex-col items-center justify-center">
+  <div class="bg-gray-200 w-1/2 rounded p-8">
+    <div>
+      <%= link_to restaurant_orders_path(@restaurant.id) do %>
+        <div class="w-auto font-bold shadow bg-green-600 hover:bg-green-500 mb-4 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+          Ver pedidos
+        </div>
+      <% end %>
+    </div>
+
+    <div class="border border-gray-600 rounded mb-4"></div>
+
+    <div>
+      <h6 class="font-bold text-xl mb-2">Produtos</h6>
+
+      <table class="w-full border border-gray-600 mb-4">
+        <thead>
+          <tr>
+            <th class="border border-gray-600">Produto</th>
+            <th class="border border-gray-600">Valor</th>
+          </tr>
+        </thead>
+
+        <%- @restaurant.items.each do |item| %>
+          <tr>
+            <td class="border border-gray-600 p-2">
+              <%= item.name %>
+            </td>
+            <td class="border border-gray-600 p-2 text-right">
+              R$ <%= sprintf("%.2f", item.value / 100.0) %>
+            </td>
+
+          </tr>
+        <% end %>
+      </table>
+
+      <%= link_to new_restaurant_item_path(@restaurant.id) do %>
+        <div class="w-auto font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+          Cadastrar novo item
+        </div>
+      <% end %>
+    </div>
+
   </div>
-<% end %>
-
-<% @restaurant.items.each do |item| %>
-  <%= item.name %>
-<% end %>
-
-
-<%= link_to restaurant_orders_path(@restaurant.id) do %>
-  <div class="w-auto font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-    Ver pedidos
-  </div>
-<% end %>
+</div>
