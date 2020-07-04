@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    render json: order_params
+    Order.create!(time_slot: params[:time_slot], restaurant: params[:restaurant_id], item_ids: [params[:item_id]])
+
+    redirect_to root_path, notice: "Seu pedido foi feito com sucesso!"
   end
 
   def check_code
@@ -24,6 +26,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:item_id, :restaurant_id, :time_slot)
+    params.permit(:time_slot)
   end
 end
