@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-  before_action :set_owner, only: %i[show edit update]
+  before_action :set_owner, only: %i[show edit update create_restaurant]
   before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant]
 
   def show
@@ -23,7 +23,18 @@ class OwnersController < ApplicationController
   end
 
   def new_restaurant
+    @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
+  end
+
+  def create_restaurant
+    restaurant = Restaurant.new(restaurant_params.merge(owner: @owner))
+
+    if restaurant.save
+      redirect_to owner_path(@owner), notice: 'Restaurante adicionado com sucesso'
+    else
+      render :new_restaurant
+    end
   end
 
   def time_slots
@@ -31,7 +42,7 @@ class OwnersController < ApplicationController
   end
 
   private def set_owner
-    @owner = Owner.first
+    @owner = Owner.find(params[:owner_id] || params[:id])
   end
 
   private def owner_params
@@ -41,5 +52,9 @@ class OwnersController < ApplicationController
 
   private def set_owner_restaurant
     @restaurant = Restaurant.find(params[:id])
+  end
+
+  private def restaurant_params
+    params.require(:restaurant).permit(:name, :code, :description)
   end
 end
