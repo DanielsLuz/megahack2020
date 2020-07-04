@@ -13,12 +13,12 @@
         </div>
       </div>
 
-      <button class="shadow bg-green-500 hover:bg-green-400
-                     focus:shadow-outline focus:outline-none text-white font-bold py-2
-                     px-4 rounded"
-              type="submit">
-        Comprar
-      </button>
+      <%= link_to orders_path(params: { item_id: item[:id], restaurant_id: @restaurant_id, time_slot: params[:time_slot] }),
+            class: "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline
+                    focus:outline-none text-white font-bold py-2 px-4 rounded",
+            method: :post do %>
+          Comprar
+      <% end %>
     </div>
   <% end %>
 </div>

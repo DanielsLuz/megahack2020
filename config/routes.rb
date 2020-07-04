@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   post 'owners/tables', to: 'owners#tables_create'
 
-  resources :orders, only: :index
+  resources :orders, only: [:index, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'welcome#index'
 end
