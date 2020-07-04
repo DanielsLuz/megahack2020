@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
       description: 'A melhor pizza em forno de pedra da cidade',
       code: "1234",
       color: 'bg-red-400',
+      orders: [{ id: 1, items: [{ name: 'já volto', value: '21.9', description: 'massa finíssima' }] }]
     },
     {
       id: 2,
