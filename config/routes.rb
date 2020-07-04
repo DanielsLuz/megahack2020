@@ -3,10 +3,11 @@ Rails.application.routes.draw do
     get 'menu'
   end
 
-  resources :owners, only: [:index, :create]
   post 'owners/tables', to: 'owners#tables_create'
+  resources :owners, only: [:index, :create]
 
+  get 'orders/check_code' => 'orders#check_code'
   resources :orders, only: :index
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   root to: 'welcome#index'
 end

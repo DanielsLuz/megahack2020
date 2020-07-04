@@ -1,0 +1,10 @@
+<div class="container flex flex-col h-screen">
+  <div class="flex-grow flex justify-center items-center w-screen bg-blue-600">
+    <div class="text-gray-300 font-bold">
+      <%= form_for orders_path do %>
+
+        <%= submit_tag "Confirmar", class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+      <% end %>
+    </div>
+  </div>
+</div>
