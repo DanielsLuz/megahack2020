@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :customers, only: :index
 
-  resources :owners, only: [:index, :create]
+  resources :owners, only: [:show, :create, :edit, :update]
   post 'owners/tables', to: 'owners#tables_create'
 
   resources :orders, only: :index

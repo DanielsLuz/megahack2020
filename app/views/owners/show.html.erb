@@ -1,0 +1,42 @@
+<div class="flex flex-col h-screen bg-blue-200">
+  <div>
+    <h1>Perfil</h1>
+
+    <div>
+      <p><%= @owner[:name] %></p>
+    </div>
+
+    <div>
+      <p>Quantidade de mesas disponíveis: <%= @owner[:usable_tables_count] %></p>
+    </div>
+
+    <div>
+      <p>Horário permitido para reservas: <%= @owner[:reservations_start_time] %> às <%= @owner[:reservations_end_time] %></p>
+    </div>
+
+    <%= link_to 'Editar', '/owners/1/edit' %>
+  </div>
+
+  <div>
+    <h1>Restaurantes cadastrados</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Código de acesso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owner[:restaurants].each do |restaurant| %>
+          <tr>
+            <td><%= restaurant[:name] %></li>
+            <td><%= restaurant[:access_code] %></li>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <button type="button">Criar Novo</button>
+    <button type="button">Editar</button>
+  </div>
+</div>
