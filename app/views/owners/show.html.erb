@@ -14,7 +14,7 @@
       <p>Horário permitido para reservas: <%= @owner.reservations_start_time %> às <%= @owner.reservations_end_time %></p>
     </div>
 
-    <%= link_to 'Editar', edit_owner_path(@owner) %>
+    <%= link_to 'Editar perfil', edit_owner_path(@owner) %>
   </div>
 
   <div>
@@ -29,14 +29,13 @@
       <tbody>
         <% @owner.restaurants.each do |restaurant| %>
           <tr>
-            <td><%= restaurant.name %></td>
+            <td><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
             <td><%= restaurant.code %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <button type="button">Criar Novo</button>
-    <button type="button">Editar</button>
+    <%= link_to 'Adicionar Restaurante', owner_restaurants_path(@owner) %>
   </div>
 </div>

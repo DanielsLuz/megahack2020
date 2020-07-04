@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get 'code' => "restaurants#code", as: :restaurant_code
   post 'check_code' => "restaurants#check_code", as: :restaurant_check_code
 
-  resources :owners, only: [:show, :create, :edit, :update]
+  resources :owners, only: [:show, :create, :edit, :update] do
+    get 'restaurants', to: 'owners#new_restaurant'
+    get 'restaurants/:id', to: 'owners#show_restaurant', as: :restaurant
+    get 'restaurants/:id/edit', to: 'owners#edit_restaurant', as: :edit_restaurant
+    get 'time_slots', on: :collection
+  end
 
   post 'owners/tables', to: 'owners#tables_create'
 
