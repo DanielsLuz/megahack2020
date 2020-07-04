@@ -1,17 +1,17 @@
 <div class="container flex flex-col h-screen">
-  <div class="menu-item bg-blue-200">
+  <%= link_to customers_path, class: 'menu-item bg-blue-200' do %>
     <div class="text-gray-800 font-bold">
       Sou cliente
     </div>
-  </div>
-  <div class="menu-item bg-blue-400">
+  <% end %>
+  <%= link_to orders_path, class: 'menu-item bg-blue-400' do %>
     <div class="text-gray-900 font-bold">
       Sou atendente
     </div>
-  </div>
-  <div class="menu-item bg-blue-200">
+  <% end %>
+  <%= link_to owners_path, class: 'menu-item bg-blue-200' do %>
     <div class="text-gray-800 font-bold">
       Sou dono
     </div>
-  </div>
+  <% end %>
 </div>
