@@ -1,0 +1,13 @@
+<div class="flex flex-col h-screen bg-blue-200">
+  <div>
+    <h1>Restaurante <%= @restaurant.name %></h1>
+
+    <div>
+      <p>Código de acesso para os funcionários: <%= @restaurant.code %></p>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to 'Editar restaurante', owner_edit_restaurant_path(owner_id: @restaurant.owner.id, id: @restaurant.id) %>
+  </div>
+</div>
