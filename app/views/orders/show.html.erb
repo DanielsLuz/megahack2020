@@ -1,9 +1,19 @@
 <div class="container flex flex-col h-screen">
   <div class="flex-grow flex justify-center items-center w-screen bg-blue-600">
     <table>
-      <%= @orders.each |order| %>
+      <%- @orders.each do |order| %>
         <tr>
-          <td><%= order.items[0].description %></td>
+          <td class="border p-4">
+            <%= order[:items][0][:description] %>
+          </td>
+          <td class="border p-6">
+            <%= form_for order_path, method: :put do %>
+              <%=
+                submit_tag "Avisar cliente está pronto!",
+                class: "p-2 bg-purple-300 font-bold"
+              %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>
