@@ -1,17 +1,10 @@
-<div class="flex flex-col h-screen">
-  <%- if flash[:alert] %>
-    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-      <p class="font-bold"><%= flash[:alert] %></p>
-    </div>
-  <% end %>
+<div class="flex h-full justify-center items-center bg-blue-600">
+  <div class="flex bg-gray-300 p-16 justify-center rounded">
+    <%= form_tag orders_check_code_path, class: "flex flex-col justify-between h-32" do %>
+      <%= label_tag "code", "Código de acesso", class: "font-medium" %>
+      <%= number_field_tag "code", "", class: "bg-gray-100 mb-2 appearance-none border-2 border-gray-200 rounded w-full h-12 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" %>
 
-  <div class="flex-grow flex items-center w-screen bg-gray-300">
-    <div class="w-full px-32">
-      <%= form_tag orders_check_code_path, class: "flex flex-col justify-between w-full h-32" do %>
-        <%= number_field_tag "code", "", class: "bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full h-12 px-8 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" %>
-
-        <%= submit_tag "Confirmar", class: "w-full font-bold shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
-      <% end %>
-    </div>
+      <%= submit_tag "Confirmar", class: "w-full font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+    <% end %>
   </div>
 </div>
