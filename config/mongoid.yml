@@ -164,4 +164,10 @@ test:
         max_pool_size: 1
 
 production:
-  uri: <%= ENV['MONGODB_URI'] %>
+  clients:
+    default:
+      uri: <%= ENV['MONGODB_URI'] %>
+      options:
+        skip_version_check: true
+        safe: true
+        retry_writes: false
