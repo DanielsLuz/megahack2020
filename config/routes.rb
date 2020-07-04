@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :restaurants, only: :index do
+  resources :restaurants, only: [:index, :show] do
+    resources :items, only: [:new, :create]
     get 'menu'
   end
 
