@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  before_action :set_restaurant_id, only: %i[menu reservation_times]
+
   RESTAURANTS = [
     { 
       id: 1,
@@ -52,6 +54,12 @@ class RestaurantsController < ApplicationController
   end
 
   def menu
-    @menu = MENUS[params[:restaurant_id].to_sym]
+    @menu = MENUS[@restaurant_id.to_sym]
+  end
+
+  private
+
+  def set_restaurant_id
+    @restaurant_id = params[:restaurant_id]
   end
 end

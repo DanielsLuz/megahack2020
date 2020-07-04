@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     get 'menu'
   end
 
+  resources :owners, only: [:index, :create] do
+    get 'time_slots', on: :collection
+  end
+
   post 'owners/tables', to: 'owners#tables_create'
   resources :owners, only: [:index, :create]
 
