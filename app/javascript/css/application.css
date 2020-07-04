@@ -1,3 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.menu-item {
+  @apply flex-grow flex justify-center items-center w-screen;
+}
