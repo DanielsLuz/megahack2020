@@ -1,10 +1,9 @@
-<div class="py-5">
+<div class="p-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 bg-blue-600">
   <% @free_time_slots.each do |time_slot| %>
-    <%= link_to restaurants_path(params: { time_slot: time_slot }), class: 'card border-solid border-b border-gray-500 bg-gray-300 text-sm' do %>
-      <div class="mb-1">
-        <div class="text-gray-900 font-bold">
-          <%= time_slot.to_s %>
-        </div>
+    <%= link_to restaurants_path(params: { time_slot: time_slot }),
+      class: 'card bg-gray-300 hover:bg-blue-300' do %>
+      <div class="font-bold">
+        <%= time_slot.to_s %>
       </div>
     <% end %>
   <% end %>
