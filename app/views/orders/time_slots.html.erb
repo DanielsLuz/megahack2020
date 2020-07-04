@@ -3,7 +3,7 @@
     <%= link_to restaurants_path(params: { time_slot: time_slot }), class: 'card border-solid border-b border-gray-500 bg-gray-300 text-sm' do %>
       <div class="mb-1">
         <div class="text-gray-900 font-bold">
-          <%= time_slot %>
+          <%= time_slot.to_s %>
         </div>
       </div>
     <% end %>

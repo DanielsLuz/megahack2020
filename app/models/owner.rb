@@ -1,5 +1,3 @@
-TIME_FRAME = 30 * 60.seconds
-
 class Owner
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -10,18 +8,23 @@ class Owner
   field :reservations_end_time, type: String
 
   has_many :restaurants, dependent: :destroy
+  has_many :time_slots
 
-
-  # Help Rodriguinho find better names to the next 3 methods
-  def time_range
-    (Time.parse(reservations_end_time) - Time.parse(reservations_start_time)) / TIME_FRAME
+  def opening_time
+    Time.parse(reservations_start_time)
   end
 
-  def date_slots
-    (0..(time_range.to_i - 1)).to_a.map { |n| Time.parse(reservations_start_time) + (TIME_FRAME * n) }
+  def closing_time
+    Time.parse(reservations_end_time)
   end
 
-  def time_slots
-    date_slots.map { |d| d.strftime("%H:%M") }
+  def slots_quantity
+    (closing_time - opening_time) / TimeSlot::DEFAULT_DURATION
+  end
+
+  def reservation_hours
+    (0...slots_quantity)
+      .map { |index| opening_time + (TimeSlot::DEFAULT_DURATION * index) }
+      .map { |date| date.strftime('%H:%M') }
   end
 end
