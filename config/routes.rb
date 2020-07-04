@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :owners, only: [:index, :create]
 
   post 'orders/check_code' => 'orders#check_code'
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :create]
 
   root to: 'welcome#index'
 end
