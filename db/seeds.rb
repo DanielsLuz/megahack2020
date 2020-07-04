@@ -1,3 +1,4 @@
+Order.destroy_all
 Owner.destroy_all
 
 Owner.create(
