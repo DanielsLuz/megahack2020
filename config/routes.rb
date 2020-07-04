@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   post 'check_code' => "restaurants#check_code", as: :restaurant_check_code
 
   resources :owners, only: [:show, :create, :edit, :update] do
-    get 'restaurants/:id', to: 'owners#show_restaurant', as: :restaurant
     get 'restaurants', to: 'owners#new_restaurant'
-    get 'restaurants/:id/edit', to: 'owners#edit_restaurant'
+    get 'restaurants/:id', to: 'owners#show_restaurant', as: :restaurant
+    get 'restaurants/:id/edit', to: 'owners#edit_restaurant', as: :edit_restaurant
     get 'time_slots', on: :collection
   end
 

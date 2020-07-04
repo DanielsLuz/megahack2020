@@ -8,6 +8,6 @@
   </div>
 
   <div>
-    <%= link_to 'Editar restaurante', owner_restaurants_path(owner_id: @restaurant.owner.id, id: @restaurant.id) %>
+    <%= link_to 'Editar restaurante', owner_edit_restaurant_path(owner_id: @restaurant.owner.id, id: @restaurant.id) %>
   </div>
 </div>
