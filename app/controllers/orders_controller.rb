@@ -10,15 +10,6 @@ class OrdersController < ApplicationController
     redirect_to root_path, notice: "Seu pedido foi feito com sucesso!"
   end
 
-  def check_code
-    restaurant = Restaurant.find_by(code: params[:code])
-    if restaurant
-      redirect_to restaurant_path(restaurant[:id])
-    else
-      redirect_to orders_path, alert: 'Código inválido!'
-    end
-  end
-
   def show
     @restaurant = Restaurant.find(params[:id])
     @orders = [] # @restaurant.orders

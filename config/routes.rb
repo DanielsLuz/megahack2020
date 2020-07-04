@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get 'menu'
     get 'orders'
   end
+  get 'code' => "restaurants#code", as: :restaurant_code
+  post 'check_code' => "restaurants#check_code", as: :restaurant_check_code
 
   resources :owners, only: [:show, :create, :edit, :update]
 
