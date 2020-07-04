@@ -9,7 +9,11 @@ class OwnersController < ApplicationController
   end
 
   def update
-    redirect_to owner_path(@owner)
+    if @owner.update(owner_params)
+      redirect_to owner_path(@owner), notice: 'Perfil atualizado com sucesso'
+    else
+      render :edit
+    end
   end
 
   def show_restaurant
@@ -28,6 +32,11 @@ class OwnersController < ApplicationController
 
   private def set_owner
     @owner = Owner.first
+  end
+
+  private def owner_params
+    params.require(:owner).permit(:name, :usable_tables_count, :reservations_start_time,
+                                  :reservations_end_time)
   end
 
   private def set_owner_restaurant
