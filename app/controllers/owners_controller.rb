@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: %i[show edit update]
-  before_action :set_owner_restaurant, only: %i[show_restaurant]
+  before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant]
 
   def show
   end
@@ -13,6 +13,9 @@ class OwnersController < ApplicationController
   end
 
   def show_restaurant
+  end
+
+  def edit_restaurant
   end
 
   def new_restaurant

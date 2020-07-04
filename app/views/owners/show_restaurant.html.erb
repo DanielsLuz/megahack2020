@@ -6,4 +6,8 @@
       <p>Código de acesso para os funcionários: <%= @restaurant.code %></p>
     </div>
   </div>
+
+  <div>
+    <%= link_to 'Editar restaurante', owner_restaurants_path(owner_id: @restaurant.owner.id, id: @restaurant.id) %>
+  </div>
 </div>
