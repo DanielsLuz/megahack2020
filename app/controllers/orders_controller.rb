@@ -9,18 +9,17 @@ class OrdersController < ApplicationController
   end
 
   def check_code
-    code = params[:code]
-    restaurant = RestaurantsController::RESTAURANTS.find { |r| r[:code] == code }
+    restaurant = Restaurant.find_by(code: params[:code])
     if restaurant
-      redirect_to order_path(restaurant[:id])
+      redirect_to restaurant_path(restaurant[:id])
     else
       redirect_to orders_path, alert: 'Código inválido!'
     end
   end
 
   def show
-    @restaurant = RestaurantsController::RESTAURANTS.find { |r| r[:id].to_s == params[:id] }
-    @orders = @restaurant[:orders]
+    @restaurant = Restaurant.find(params[:id])
+    @orders = [] # @restaurant.orders
   end
 
   private
