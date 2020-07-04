@@ -3,7 +3,7 @@ class Restaurant
   include Mongoid::Timestamps
 
   field :name, type: String
-  field :code, type: Integer
+  field :code, type: String
   field :description, type: String
   field :color, type: String
 
