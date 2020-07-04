@@ -3,15 +3,14 @@ Rails.application.routes.draw do
     get 'menu'
   end
 
-  resources :owners, only: [:index, :create] do
+  resources :owners, only: [:show, :create, :edit, :update] do
     get 'time_slots', on: :collection
   end
 
   post 'owners/tables', to: 'owners#tables_create'
-  resources :owners, only: [:index, :create]
 
   post 'orders/check_code' => 'orders#check_code'
-  resources :orders, only: [:index, :show, :create]
+  resources :orders, only: [:index, :show, :create, :update]
 
   root to: 'welcome#index'
 end
