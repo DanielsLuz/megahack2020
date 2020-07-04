@@ -1,39 +1,33 @@
 <div class="flex flex-col h-screen bg-blue-200">
   <h1>Perfil</h1>
 
-  <%= form_with url: '/owners/1', method: 'patch', class: 'px-3 flex flex-col md:flex-row items-center w-full my-5' do %>
+  <%= form_with model: @owner, class: 'px-3 flex flex-col md:flex-row items-center w-full my-5' do |f| %>
     <div>
-      <label for="owner-name" class="text-gray-700 text-base">
+      <label for="owner_name" class="text-gray-700 text-base">
         Nome
       </label>
       <div class="m-5 md:my-0">
-        <input class="bg-gray-200 appearance-none border-2 border-gray-200
+        <%= f.text_field :name, class: 'bg-gray-200 appearance-none border-2 border-gray-200
                       rounded w-full py-2 px-4 text-gray-700 leading-tight
                       border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500"
-              id="owner-name"
-              name="name"
-              type="text">
+                      focus:border-blue-500' %>
       </div>
     </div>
 
     <div>
-      <label for="owner-usable-tables-count" class="text-gray-700 text-base">
+      <label for="owner_usable_tables_count" class="text-gray-700 text-base">
         Quantidade de mesas disponíveis
       </label>
       <div class="m-5 md:my-0">
-        <input class="bg-gray-200 appearance-none border-2 border-gray-200
-                      rounded w-full py-2 px-4 text-gray-700 leading-tight
+        <%= f.number_field :usable_tables_count, class: 'bg-gray-200 appearance-none border-2
+                      border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight
                       border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500"
-              id="owner-usable-tables-count"
-              name="usable_tables_count"
-              type="number">
+                      focus:border-blue-500' %>
       </div>
     </div>
 
     <div>
-      <label for="owner-reservations-start-time" class="text-gray-700 text-base">
+      <label for="owner_reservations_start_time" class="text-gray-700 text-base">
         Horário de abertura das reservas
       </label>
       <div class="m-5 md:my-0">
@@ -41,14 +35,15 @@
                       rounded w-full py-2 px-4 text-gray-700 leading-tight
                       border-blue-300 focus:outline-none focus:bg-white
                       focus:border-blue-500"
-              id="owner-reservations-start-time"
-              name="reservations_start_time"
+              id="owner_reservations_end_time"
+              name="owner[reservations_start_time]"
+              value="<%= @owner.reservations_start_time %>"
               type="time">
       </div>
     </div>
 
     <div>
-      <label for="owner-name" class="text-gray-700 text-base">
+      <label for="owner_reservations_end_time" class="text-gray-700 text-base">
         Horário de fechamento das reservas
       </label>
       <div class="m-5 md:my-0">
@@ -56,18 +51,17 @@
                       rounded w-full py-2 px-4 text-gray-700 leading-tight
                       border-blue-300 focus:outline-none focus:bg-white
                       focus:border-blue-500"
-              id="owner-name"
+              id="owner_reservations_end_time"
+              name="owner[reservations_end_time]"
+              value="<%= @owner.reservations_end_time %>"
               type="time">
       </div>
     </div>
 
     <div>
-      <button class="shadow bg-blue-500 hover:bg-blue-400
+      <%= f.submit 'Salvar', class: 'shadow bg-blue-500 hover:bg-blue-400
                      focus:shadow-outline focus:outline-none text-white font-bold py-2
-                     px-4 rounded"
-              type="submit">
-        Salvar
-      </button>
+                     px-4 rounded' %>
     </div>
   <% end %>
 
