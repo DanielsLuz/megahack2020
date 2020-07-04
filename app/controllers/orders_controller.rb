@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def time_slots
-    @free_time_slots = FREE_TIME_SLOTS
+    @free_time_slots = Owner.first.time_slots
   end
 
   private
