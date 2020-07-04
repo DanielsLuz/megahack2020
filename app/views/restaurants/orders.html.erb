@@ -1,0 +1,19 @@
+<table class="border border-black">
+  <thead class="border border-black">
+    <tr>
+      <th class="border border-black p-2">#</th>
+      <th class="border border-black p-2">Produto</th>
+      <th class="border border-black p-2">Horário agenda</th>
+    </tr>
+  </thead>
+
+  <tbody class="border border-black">
+    <% @orders.each do |order| %>
+      <tr>
+        <td class="border border-black p-2"><%= order.id.to_s[-4..-1] %></td>
+        <td class="border border-black p-2"><%= order.item.name %></td>
+        <td class="border border-black p-2"><%= order.time_slot %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

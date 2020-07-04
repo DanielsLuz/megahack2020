@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :items, only: [:new, :create]
     get 'menu'
+    get 'orders'
   end
 
   resources :owners, only: [:show, :create, :edit, :update] do

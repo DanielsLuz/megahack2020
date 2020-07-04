@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant_id, only: %i[menu reservation_times]
+  before_action :set_restaurant_id, only: %i[menu reservation_times orders]
   before_action :set_restaurant, only: %i[show]
 
   def index
@@ -12,6 +12,10 @@ class RestaurantsController < ApplicationController
 
   def show
     @items = @restaurant.items
+  end
+
+  def orders
+    @orders = Order.where(restaurant_id: @restaurant_id)
   end
 
   private
