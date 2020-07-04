@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
-  resources :customers, only: :index
+  resources :restaurants, only: :index do
+    get 'menu'
+  end
 
-  resources :owners, only: [:show, :create, :edit, :update]
+  resources :owners, only: [:show, :create, :edit, :update] do
+    get 'time_slots', on: :collection
+  end
+
   post 'owners/tables', to: 'owners#tables_create'
 
-  resources :orders, only: :index
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  post 'orders/check_code' => 'orders#check_code'
+  resources :orders, only: [:index, :show, :create]
+
   root to: 'welcome#index'
 end

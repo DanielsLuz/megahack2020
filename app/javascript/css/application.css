@@ -5,3 +5,7 @@
 .menu-item {
   @apply flex-grow flex justify-center items-center w-screen;
 }
+
+.card {
+  @apply rounded shadow-md p-4 flex justify-between leading-normal;
+}

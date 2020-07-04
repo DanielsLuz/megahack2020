@@ -13,6 +13,8 @@ class OwnersController < ApplicationController
     reservations_end_time: '20:00'
   }.freeze
 
+  FREE_TIME_SLOTS = ['10:00','11:00','11:30','13:00','13:30','17:00'].freeze
+
   def show
   end
 
@@ -25,5 +27,9 @@ class OwnersController < ApplicationController
 
   private def set_owner
     @owner = OWNER_MOCKUP
+  end
+
+  def time_slots
+    @free_time_slots = FREE_TIME_SLOTS
   end
 end
