@@ -1,7 +1,8 @@
 <div class="container flex flex-col h-screen">
   <div class="flex-grow flex justify-center items-center w-screen bg-blue-600">
-    <div class="text-gray-300 font-bold">
-      <%= form_for orders_path do %>
+    <div class="font-bold">
+      <%= form_tag orders_check_code_path do %>
+        <%= number_field_tag "code", class: "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" %>
 
         <%= submit_tag "Confirmar", class: "shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
       <% end %>

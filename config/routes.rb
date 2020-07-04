@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'owners/tables', to: 'owners#tables_create'
   resources :owners, only: [:index, :create]
 
-  get 'orders/check_code' => 'orders#check_code'
+  post 'orders/check_code' => 'orders#check_code'
   resources :orders, only: :index
 
   root to: 'welcome#index'
