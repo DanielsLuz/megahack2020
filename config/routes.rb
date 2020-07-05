@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'restaurants', to: 'owners#new_restaurant'
     post 'restaurants', to: 'owners#create_restaurant'
     get 'restaurants/:id', to: 'owners#show_restaurant', as: :restaurant
+    put 'restaurants/:id', to: 'owners#update_restaurant'
+    patch 'restaurants/:id', to: 'owners#update_restaurant'
     get 'restaurants/:id/edit', to: 'owners#edit_restaurant', as: :edit_restaurant
     get 'time_slots', on: :collection
   end
