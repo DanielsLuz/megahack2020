@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    Order.create!(time_slot: params[:time_slot], restaurant: params[:restaurant_id], item_ids: [params[:item_id]])
+    Order.create!(order_params)
 
     redirect_to root_path, notice: "Seu pedido foi feito com sucesso!"
   end
@@ -20,6 +20,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:time_slot)
+    params
+      .permit(:time_slot, :restaurant_id, :phone_number)
+      .merge(item_ids: [params[:item_id]])
   end
 end

@@ -9,3 +9,13 @@
 .card {
   @apply rounded shadow-md p-4 flex justify-between leading-normal;
 }
+
+.form-input {
+  @apply bg-gray-100 appearance-none border-2 border-gray-200 rounded h-8 px-2 leading-tight;
+}
+
+.form-input:focus {
+  background-color: theme('colors.white');
+  border-color: theme('colors.blue.500');
+  outline: none;
+}
