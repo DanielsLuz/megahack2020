@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     current_usage = order.time_slot.current_usage
     order.time_slot.update!(current_usage: current_usage + 1)
 
+    cookies[:phone_number] = order_params[:phone_number]
     redirect_to root_path, notice: "Seu pedido foi feito com sucesso!"
   end
 
