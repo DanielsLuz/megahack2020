@@ -17,6 +17,30 @@ There are three personas that can use this APP:
 * [TailwindCSS](http://tailwindcss.com/): a utility-first CSS framework (not premade components)
 * [Sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron): cron jobs used for notifying customers of their reservations
 
+## Requirements
+* Rails 6
+* [Docker](https://www.docker.com/)
+* [docker-compose](https://docs.docker.com/compose/)
+
+## Setup
+Install dependencies:
+```
+bundle install
+```
+
+Load test seeds:
+```
+bundle exec rails db:setup
+
+# if seeds do not show up, just
+bundle exec rails db:seed
+```
+
+Spin up all docker environments:
+```
+docker-compose up -d
+```
+
 ## Main actions
 1- **The customer**:
   * Check possible time slots for reservation
