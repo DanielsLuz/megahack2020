@@ -2,4 +2,5 @@
   <h1>Criar Restaurante</h1>
 
   <%= render 'restaurant_form', { owner: @owner, restaurant: @restaurant } %>
+  <%= link_to 'Voltar', owner_path(@owner) %>
 </div>

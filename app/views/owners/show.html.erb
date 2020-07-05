@@ -24,6 +24,7 @@
         <tr>
           <th>Nome</th>
           <th>Código de acesso</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,18 @@
           <tr>
             <td><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
             <td><%= restaurant.code %></td>
+            <td>
+              <%= link_to 'Editar', owner_edit_restaurant_path(owner_id: @owner.id, id: restaurant.id) %>  |
+              <%= link_to 'Remover',
+                owner_restaurant_path(owner_id: @owner.id, id: restaurant.id),
+                method: :delete,
+                data: {
+                  toggle: 'tooltip',
+                  confirm: "Essa ação é irreversível. Deseja remover o restaurante #{restaurant.name}?"
+                },
+                title: "Editar Avaliação"
+              %>
+            </td>
           </tr>
         <% end %>
       </tbody>

@@ -2,9 +2,9 @@
   <div class="flex bg-gray-300 p-16 justify-center rounded">
     <%= form_tag restaurant_check_code_path, class: "flex flex-col justify-between h-32" do %>
       <%= label_tag "code", "Código de acesso", class: "font-medium" %>
-      <%= text_field_tag "code", "", class: "bg-gray-100 mb-2 appearance-none border-2 border-gray-200 rounded w-full h-12 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" %>
+      <%= text_field_tag "code", "", class: "w-full form-input" %>
 
-      <%= submit_tag "Confirmar", class: "w-full font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" %>
+      <%= submit_tag "Confirmar", class: "w-full form-button bg-blue-600 hover:bg-blue-500" %>
     <% end %>
   </div>
 </div>
