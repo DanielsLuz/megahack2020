@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def time_slots
     lookup_orders
-    @free_time_slots = Owner.first.available_time_slots
+    @free_time_slots = Owner.first.time_slots
   end
 
   def complete
