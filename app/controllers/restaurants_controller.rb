@@ -23,11 +23,9 @@ class RestaurantsController < ApplicationController
 
   def check_code
     restaurant = Restaurant.find_by(code: params[:code])
-    if restaurant
-      redirect_to restaurant_path(restaurant[:id])
-    else
-      redirect_to orders_path, alert: 'Código inválido!'
-    end
+    redirect_to restaurant_path(restaurant[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    redirect_to restaurants_code_path, alert: 'Código inválido!'
   end
 
   private
