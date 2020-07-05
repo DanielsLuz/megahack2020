@@ -6,7 +6,7 @@ owner = Owner.create(
   name: 'Shawee Shopping',
   usable_tables_count: 2,
   reservations_start_time: '10:00',
-  reservations_end_time: '00:00',
+  reservations_end_time: '23:59',
   restaurants: [
     Restaurant.create(
       name: 'McDonalds',
