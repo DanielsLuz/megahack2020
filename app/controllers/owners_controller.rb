@@ -41,10 +41,7 @@ class OwnersController < ApplicationController
 
   def update_restaurant
     if @restaurant.update(restaurant_params)
-      redirect_to(
-        owner_restaurant_path(owner_id: @owner.id, id: @restaurant.id),
-        notice: 'Restaurante atualizado com sucesso'
-      )
+      redirect_to owner_path(@owner), notice: 'Restaurante atualizado com sucesso'
     else
       render :edit
     end

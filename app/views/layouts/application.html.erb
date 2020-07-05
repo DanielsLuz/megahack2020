@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Megahack2020</title>
+    <title>Desaglomera</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,22 +13,13 @@
   </head>
 
   <body class="bg-blue-600">
-    <%- if flash[:alert] %>
-      <div class="absolute w-full bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-        <p class="font-bold"><%= flash[:alert] %></p>
-      </div>
-    <% end %>
-
-    <%- if flash[:notice] %>
-      <div class="absolute w-full bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="notice">
-        <p class="font-bold"><%= flash[:notice] %></p>
-      </div>
-    <% end %>
-
     <div class="h-full flex flex-col">
       <div class="w-full text-white font-bold p-4 border-b-2 border-blue-200">
         <%= link_to 'Desaglomera 🍴', root_path  %>
       </div>
+
+      <%= render 'layouts/flash_messages' %>
+
       <div class="h-full">
         <%= yield %>
       </div>
