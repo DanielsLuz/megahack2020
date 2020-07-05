@@ -27,5 +27,8 @@ Rails.application.routes.draw do
     put 'complete'
   end
 
+  resources :carts, only: [:create]
+  patch "carts" => "carts#add_item", as: :cart_add_item
+
   root to: 'welcome#index'
 end

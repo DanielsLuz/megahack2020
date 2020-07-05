@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
   end
 
   def menu
+    @cart = session.dig("cart", "items")
     @menu = Restaurant.find(@restaurant_id).items
   end
 
