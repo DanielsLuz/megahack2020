@@ -4,7 +4,7 @@
   </div>
   <% @restaurants.each do |restaurant| %>
     <%= link_to restaurant_menu_path(restaurant[:id], params: { time_slot_id: params[:time_slot_id] }),
-                class: "card my-2 bg-#{restaurant[:color]}-300" do %>
+                class: "card my-2 bg-#{restaurant[:color]}-400" do %>
       <div class="mb-6">
         <div class="text-gray-900 font-bold text-xl mb-2">
           <%= restaurant[:name] %>
