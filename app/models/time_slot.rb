@@ -1,9 +1,10 @@
 class TimeSlot
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   DEFAULT_DURATION = 30.minutes
 
-  field :start_time, type: Time
+  field :start_time, type: ActiveSupport::TimeWithZone
   field :duration, type: ActiveSupport::Duration, default: DEFAULT_DURATION
   field :total_capacity, type: Integer
   field :current_usage, type: Integer

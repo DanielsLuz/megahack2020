@@ -3,10 +3,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = Order.create!(order_params)
-    current_usage = order.time_slot.current_usage
-    order.time_slot.update!(current_usage: current_usage + 1)
+    items_by_restaurant = params[:items].map{ |item_id| Item.find(item_id) }.group_by(&:restaurant)
 
+    orders = items_by_restaurant.map do |restaurant, items|
+      Order.create!(order_params.merge(restaurant: restaurant, item_ids: items.map(&:id)))
+    end
+
+    current_usage = orders.first.time_slot.current_usage
+    orders.first.time_slot.update!(current_usage: current_usage + 1)
+    session["cart"]["items"] = []
     cookies[:phone_number] = order_params[:phone_number]
     redirect_to time_slots_orders_path, notice: "Seu pedido foi feito com sucesso!"
   end
@@ -19,6 +24,7 @@ class OrdersController < ApplicationController
   def time_slots
     lookup_orders
     @free_time_slots = Owner.first.time_slots
+    @next_order_time = @existing_orders.map(&:time_slot).min { |time_slot| time_slot.start_time }
   end
 
   def complete
@@ -37,8 +43,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params
-      .permit(:time_slot_id, :restaurant_id, :phone_number)
-      .merge(item_ids: [params[:item_id]])
+    params.permit(:time_slot_id, :phone_number)
   end
 end
