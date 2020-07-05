@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    Order.create!(order_params)
+    order = Order.create!(order_params)
+    current_usage = order.time_slot.current_usage
+    order.time_slot.update!(current_usage: current_usage + 1)
 
     redirect_to root_path, notice: "Seu pedido foi feito com sucesso!"
   end
@@ -14,7 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def time_slots
-    @free_time_slots = Owner.first.time_slots
+    @free_time_slots = Owner.first.available_time_slots
   end
 
   private

@@ -13,4 +13,8 @@ class TimeSlot
   def to_s
     start_time.strftime('%H:%M')
   end
+
+  def available?
+    current_usage < total_capacity
+  end
 end

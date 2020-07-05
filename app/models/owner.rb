@@ -10,6 +10,10 @@ class Owner
   has_many :restaurants, dependent: :destroy
   has_many :time_slots
 
+  def available_time_slots
+    time_slots.select(&:available?)
+  end
+
   def opening_time
     Time.parse(reservations_start_time)
   end
