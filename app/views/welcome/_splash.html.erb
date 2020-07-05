@@ -1,0 +1,70 @@
+<div id="splash-screen" class="fixed top-0 left-0 wrapper items-center justify-center h-screen w-screen flex bg-blue-600">
+  <div class="inner-wrapper w-50 flex flex-col">
+    <div class="text-3xl text-center">Desaglomera</div>
+    <div class="lines-wrapper flex items-center justify-center">
+      <div class="line side-line"></div>
+      <div class="icon icon-1 mr-1">🥄</div>
+      <div class="line line-center"></div>
+      <div class="icon icon-2 ml-1">🔪</div>
+      <div class="line side-line"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const wrapper = document.getElementById('splash-screen')
+anime.timeline({loop: false, complete: () => wrapper.parentNode.removeChild(wrapper)})
+  .add({
+    targets: document.querySelectorAll('.inner-wrapper'),
+    opacity: [0,1],
+    scaleY: [0,1],
+    easing: "easeInOutExpo",
+    duration: 1000
+  })
+  .add({
+    targets: document.querySelectorAll('.side-line'),
+    opacity: [0,1],
+    width: [0,"50%"],
+    easing: "easeInOutExpo",
+    duration: 800
+  }, '-=400')
+  .add({
+    targets: document.querySelectorAll('.line-center'),
+    opacity: [0,1],
+    width: [0,"100%"],
+    easing: "easeInOutExpo",
+    duration: 1000
+  })
+  .add({
+    targets: document.querySelectorAll('.side-line'),
+    opacity: [1,0],
+    width: ["50%",0],
+    easing: "easeOutExpo",
+    duration: 500
+  }, '-=1000')
+  .add({
+    targets: document.querySelectorAll('.icon'),
+    rotateZ: [0,'20deg', '-20deg',0],
+    easing: "spring(1, 80, 10, 0)",
+    direction: 'alternate',
+    loop: true,
+    duration: 1000
+  }, '-=2000')
+  .add({
+    targets: document.querySelectorAll('.wrapper'),
+    opacity: [1,0],
+    easing: "easeInOutExpo",
+    duration: 500
+  })
+</script>
+
+
+<style>
+.lines-wrapper {
+  line-height: 10px;
+}
+.line {
+  background-color: #CD9A03;
+  height: 2px;
+}
+</style>

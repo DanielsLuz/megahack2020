@@ -9,6 +9,7 @@
     <%= stylesheet_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js"></script>
   </head>
 
   <body class="bg-blue-600">
@@ -24,6 +25,13 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <div class="flex flex-col h-full">
+      <div class="w-full p-4 border-b-2 border-blue-200">
+        Desaglomera 🍴
+      </div>
+      <div class="h-full">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
