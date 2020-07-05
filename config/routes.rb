@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  namespace 'restaurants' do
+    get 'code'
+    post 'check_code'
+  end
+
   resources :restaurants, only: [:index, :show] do
     resources :items, only: [:new, :create]
     get 'menu'
     get 'orders'
   end
-  get 'code' => "restaurants#code", as: :restaurant_code
-  post 'check_code' => "restaurants#check_code", as: :restaurant_check_code
 
   resources :owners, only: [:show, :create, :edit, :update] do
     get 'restaurants', to: 'owners#new_restaurant'
@@ -15,12 +18,10 @@ Rails.application.routes.draw do
     patch 'restaurants/:id', to: 'owners#update_restaurant'
     delete 'restaurants/:id', to: 'owners#destroy_restaurant'
     get 'restaurants/:id/edit', to: 'owners#edit_restaurant', as: :edit_restaurant
-    get 'time_slots', on: :collection
   end
 
   post 'owners/tables', to: 'owners#tables_create'
 
-  post 'orders/check_code' => 'orders#check_code'
   resources :orders, only: [:index, :show, :create, :update] do
     get 'time_slots', on: :collection
     put 'complete'
