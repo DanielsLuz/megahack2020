@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
   def time_slots
     lookup_orders
     @free_time_slots = Owner.first.time_slots
-    @next_order_time = @existing_orders.map(&:time_slot).min { |time_slot| time_slot.start_time }
   end
 
   def complete
@@ -39,6 +38,7 @@ class OrdersController < ApplicationController
   def lookup_orders
     if (phone_number = cookies[:phone_number])
       @existing_orders = Order.where(phone_number: phone_number, completed: false)
+      @next_order_time = @existing_orders.map(&:time_slot).min { |time_slot| time_slot.start_time }
     end
   end
 
