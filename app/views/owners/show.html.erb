@@ -1,69 +1,56 @@
-<div class="flex flex-col justify-around items-center h-full w-full">
-  <div class="flex justify-center items-center bg-blue-600">
-    <div class="bg-gray-300 p-12 rounded">
-      <div class="md:flex md:items-center mb-6 font-medium">
-        Perfil
-      </div>
-
-      <div>
-        <p><%= @owner.name %></p>
-      </div>
-
-      <div>
-        <p>Quantidade de mesas disponíveis: <%= @owner.usable_tables_count %></p>
-      </div>
-
-      <div>
-        <p>Horário permitido para reservas: <%= @owner.reservations_start_time %> às <%= @owner.reservations_end_time %></p>
-      </div>
-
-      <div class="md:flex md:items-center mb-6 font-medium mt-5">
-        <%= link_to 'Editar perfil', edit_owner_path(@owner),
-          class: 'w-full form-button bg-blue-600 hover:bg-blue-500 focus:shadow-outline text-center' %>
-      </div>
+<div class="grid md:grid-cols-1">
+  <div class="w-full bg-gray-100 p-6 text-gray-600">
+    <div>
+      Perfil
     </div>
+    <div class="text-xl text-black">
+      <%= @owner.name %>
+    </div>
+    <div class="text-sm">
+      Mesas disponíveis: <span class="text-black"><%= @owner.usable_tables_count %></span>
+    </div>
+
+    <div class="text-sm">
+      Horário para reservas: <span class="block md:inline text-black"><%= @owner.reservations_start_time %> às <%= @owner.reservations_end_time %></span>
+    </div>
+
+    <%= link_to 'Editar perfil', edit_owner_path(@owner), class: 'text-xs underline' %>
   </div>
 
-  <div class="flex justify-center items-center bg-blue-600">
-    <div class="bg-gray-300 p-12 rounded">
-      <div class="md:flex md:items-center mb-6 font-medium">
-        Restaurantes cadastrados
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Código de acesso</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @owner.restaurants.each do |restaurant| %>
-            <tr>
-              <td><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
-              <td><%= restaurant.code %></td>
-              <td>
-                <%= link_to 'Editar', owner_edit_restaurant_path(owner_id: @owner.id, id: restaurant.id) %>  |
-                <%= link_to 'Remover',
-                  owner_restaurant_path(owner_id: @owner.id, id: restaurant.id),
-                  method: :delete,
-                  data: {
-                    toggle: 'tooltip',
-                    confirm: "Essa ação é irreversível. Deseja remover o restaurante #{restaurant.name}?"
-                  },
-                  title: "Editar Avaliação"
-                %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <div class="md:flex md:items-center mb-6 font-medium mt-5">
-        <%= link_to 'Adicionar Restaurante', owner_restaurants_path(@owner),
-          class: 'w-full form-button bg-blue-600 hover:bg-blue-500 focus:shadow-outline text-center' %>
-      </div>
+  <div class="w-full p-6 bg-gray-200">
+    <div class="text-black font-bold">
+      <div>Restaurantes cadastrados</div>
+      <%= link_to '+ Adicionar Restaurante', owner_restaurants_path(@owner),
+        class: 'w-full text-blue-600 hover:text-blue-500 underline' %>
     </div>
+    <table class="table-auto w-full">
+      <thead>
+        <tr class="text-gray-700">
+          <th class="px-4 py-2">Nome</th>
+          <th class="px-4 py-2">Código de acesso</th>
+          <th class="px-4 py-2">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @owner.restaurants.each_with_index do |restaurant, index| %>
+          <tr class="<%= (index % 2 == 0) ? 'bg-gray-300' : ''%>">
+            <td class="border px-4 py-2"><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
+            <td class="border px-4 py-2"><%= restaurant.code %></td>
+            <td class="border px-4 py-2 text-center">
+              <%= link_to 'Editar', owner_edit_restaurant_path(owner_id: @owner.id, id: restaurant.id), class: 'text-gray-600' %>
+              <%= link_to 'Remover',
+                owner_restaurant_path(owner_id: @owner.id, id: restaurant.id),
+                method: :delete,
+                data: {
+                  toggle: 'tooltip',
+                  confirm: "Essa ação é irreversível. Deseja remover o restaurante #{restaurant.name}?"
+                },
+                class: 'text-red-600'
+              %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
