@@ -73,6 +73,6 @@ class OwnersController < ApplicationController
   end
 
   private def restaurant_params
-    params.require(:restaurant).permit(:name, :code, :description)
+    params.require(:restaurant).permit(:name, :code, :description, :color)
   end
 end
