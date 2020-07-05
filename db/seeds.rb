@@ -9,7 +9,7 @@ owner = Owner.create(
   reservations_end_time: '20:00',
   restaurants: [
     Restaurant.create(
-      name: 'McDonals',
+      name: 'McDonalds',
       code: 'mc123',
       description: 'Descrição aqui',
       color: 'red',
