@@ -59,20 +59,22 @@ class OwnersController < ApplicationController
     @free_time_slots = FREE_TIME_SLOTS
   end
 
-  private def set_owner
+  private
+
+  def set_owner
     @owner = Owner.find(params[:owner_id] || params[:id])
   end
 
-  private def owner_params
+  def owner_params
     params.require(:owner).permit(:name, :usable_tables_count, :reservations_start_time,
                                   :reservations_end_time)
   end
 
-  private def set_restaurant
+  def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 
-  private def restaurant_params
+  def restaurant_params
     params.require(:restaurant).permit(:name, :code, :description, :color, :description)
   end
 end

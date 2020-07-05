@@ -5,6 +5,7 @@
     </div>
 
     <%= render 'restaurant_form', { owner: @owner, restaurant: @restaurant } %>
+
     <div class="md:flex md:items-center mb-6 font-medium mt-1">
       <%= link_to 'Voltar', owner_path(@owner),
         class: 'w-full form-button bg-gray-600 hover:bg-gray-500 focus:shadow-outline text-center' %>
