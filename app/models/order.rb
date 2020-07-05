@@ -4,6 +4,7 @@ class Order
   field :time_slot_id, type: String
   field :item_ids, type: Array
   field :phone_number, type: String
+  field :completed, type: Boolean, default: false
 
   belongs_to :restaurant
 

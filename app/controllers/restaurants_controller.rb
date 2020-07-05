@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
   end
 
   def orders
-    @orders = Order.where(restaurant_id: @restaurant_id)
+    @orders = Order.where(restaurant_id: @restaurant_id, completed: false)
   end
 
   def code

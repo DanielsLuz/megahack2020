@@ -20,6 +20,13 @@ class OrdersController < ApplicationController
     @free_time_slots = Owner.first.available_time_slots
   end
 
+  def complete
+    @order = Order.find(params[:order_id])
+    @order.update!(completed: true)
+    @order.time_slot.update(current_usage: @order.time_slot.current_usage - 1)
+    redirect_to restaurant_orders_path(@order.restaurant_id), notice: "Enviamos uma notificação para o cliente!"
+  end
+
   private
 
   def order_params

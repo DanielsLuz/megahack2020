@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create, :update] do
     get 'time_slots', on: :collection
+    put 'complete'
   end
 
   root to: 'welcome#index'
