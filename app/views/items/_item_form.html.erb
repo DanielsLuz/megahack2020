@@ -1,37 +1,40 @@
-<div class="bg-gray-300 p-12 rounded">
+<div class="bg-gray-300 p-12">
   <%= form_tag restaurant_items_path(@restaurant.id) do %>
-    <div class="md:flex md:items-center mb-6 font-medium">
+    <div class="md:flex md:justify-center mb-6 font-medium">
       Cadastrar novo item
     </div>
     <div class="md:flex md:items-center mb-6">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="item-name">
+      <label class="block md:w-1/3 text-gray-600 md:text-right mb-1 md:mb-0 pr-4" for="item-name">
         Item
       </label>
       <input type="text"
              name="name"
              id="item-name"
-             class="form-input w-full">
+             class="form-input md:w-2/3"
+             placeholder="Tastiest Burger">
     </div>
     <div class="md:flex md:items-center mb-6">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="item-price">
+      <label class="block md:w-1/3 text-gray-600 md:text-right mb-1 md:mb-0 pr-4" for="item-price">
         Preço
       </label>
       <input type="text"
              name="value"
              id="item-price"
-             class="form-input w-full">
+             class="form-input md:w-2/3"
+             placeholder="R$1.99">
     </div>
     <div class="md:flex md:items-center mb-6">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="item-description">
+      <label class="block md:w-1/3 text-gray-600 md:text-right mb-1 md:mb-0 pr-4" for="item-description">
         Descrição
       </label>
       <input type="text"
              name="description"
              id="item-description"
-             class="form-input w-full">
+             class="form-input md:w-2/3"
+             placeholder="Acompanha fritas">
     </div>
-    <div class="md:flex md:items-center">
-      <button class="w-full form-button bg-blue-600 hover:bg-blue-500 focus:shadow-outline" type="submit">
+    <div class="md:flex md:justify-center">
+      <button class="w-full md:w-2/3 form-button bg-blue-600 hover:bg-blue-500 focus:shadow-outline" type="submit">
         Cadastrar
       </button>
     </div>
