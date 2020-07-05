@@ -1,19 +1,13 @@
-<table class="border border-black">
-  <thead class="border border-black">
-    <tr>
-      <th class="border border-black p-2">#</th>
-      <th class="border border-black p-2">Produto</th>
-      <th class="border border-black p-2">Horário agenda</th>
-    </tr>
-  </thead>
+<div class="h-screen w-full bg-blue-600 flex flex-col items-center justify-center">
+  <div class="bg-gray-100 md:w-1/2 w-full p-4">
+    <h6 class="font-bold text-xl mb-2">Pedidos</h6>
 
-  <tbody class="border border-black">
     <% @orders.each do |order| %>
       <tr>
-        <td class="border border-black p-2"><%= order.id.to_s[-4..-1] %></td>
-        <td class="border border-black p-2"><%= order.item.name %></td>
-        <td class="border border-black p-2"><%= order.time_slot %></td>
+        <div class="bg-gray-300 p-4 mb-4 shadow-md">
+          <%= "# #{order.id.to_s.upcase[-4..-1]} - #{order.item.name}" %>
+        </div>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
