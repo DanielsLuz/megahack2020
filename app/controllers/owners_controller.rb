@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
-  before_action :set_owner, only: %i[show edit update create_restaurant]
-  before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant]
+  before_action :set_owner, only: %i[show edit update create_restaurant edit_restaurant update_restaurant]
+  before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant update_restaurant]
 
   def show
   end
@@ -34,6 +34,17 @@ class OwnersController < ApplicationController
       redirect_to owner_path(@owner), notice: 'Restaurante adicionado com sucesso'
     else
       render :new_restaurant
+    end
+  end
+
+  def update_restaurant
+    if @restaurant.update(restaurant_params)
+      redirect_to(
+        owner_restaurant_path(owner_id: @owner.id, id: @restaurant.id),
+        notice: 'Restaurante atualizado com sucesso'
+      )
+    else
+      render :edit
     end
   end
 
