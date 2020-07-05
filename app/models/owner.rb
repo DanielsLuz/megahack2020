@@ -22,6 +22,10 @@ class Owner
     Time.parse(reservations_end_time)
   end
 
+  def next_time_slot
+    time_slots.where(:start_time.gt => DateTime.now).first
+  end
+
   def slots_quantity
     (closing_time - opening_time) / TimeSlot::DEFAULT_DURATION
   end
