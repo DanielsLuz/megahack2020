@@ -21,6 +21,12 @@ class OrdersController < ApplicationController
     @orders = [] # @restaurant.orders
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to time_slots_orders_path, notice: 'Reserva desfeita com sucesso'
+  end
+
   def time_slots
     lookup_orders
     @free_time_slots = Owner.first.time_slots
