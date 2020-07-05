@@ -17,4 +17,8 @@ class TimeSlot
   def available?
     current_usage < total_capacity
   end
+
+  def available_tables_count
+    total_capacity - current_usage
+  end
 end

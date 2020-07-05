@@ -26,6 +26,9 @@
         <div class="font-bold">
           <%= time_slot.to_s %>
         </div>
+        <div class="font-bold info-circle bg-blue-600">
+          <%= time_slot.available_tables_count %>
+        </div>
       <% end %>
     <% end %>
   </div>
