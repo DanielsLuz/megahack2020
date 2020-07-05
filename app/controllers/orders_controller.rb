@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def time_slots
+    lookup_orders
     @free_time_slots = Owner.first.available_time_slots
   end
 
@@ -28,6 +29,12 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def lookup_orders
+    if (phone_number = cookies[:phone_number])
+      @existing_orders = Order.where(phone_number: phone_number, completed: false)
+    end
+  end
 
   def order_params
     params

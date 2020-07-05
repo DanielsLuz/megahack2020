@@ -1,10 +1,34 @@
-<div class="p-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 bg-blue-600">
-  <% @free_time_slots.each do |time_slot| %>
-    <%= link_to restaurants_path(params: { time_slot_id: time_slot }),
-      class: 'card bg-gray-300 hover:bg-blue-300' do %>
-      <div class="font-bold">
-        <%= time_slot.to_s %>
-      </div>
+<% if @existing_orders.present? %>
+  <div class="p-8 bg-green-600">
+    <div class="text-white text-lg font-bold mb-3">
+      Pedidos em andamento
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @existing_orders.each do |order| %>
+        <div class="bg-white rounded-lg p-6">
+          <div class="text-center md:text-left">
+            <h2 class="text-lg">Pedido: <%= order.item.name %></h2>
+            <div>Horário: <%= order.time_slot.to_s %></div>
+            <div class="text-gray-600">Restaurante: <%= order.restaurant.name %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="p-8 bg-blue-600">
+  <div class="text-white text-lg font-bold mb-3">
+    Escolha um horário
+  </div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @free_time_slots.each do |time_slot| %>
+      <%= link_to restaurants_path(params: { time_slot_id: time_slot }),
+        class: 'card bg-gray-300 hover:bg-blue-300' do %>
+        <div class="font-bold">
+          <%= time_slot.to_s %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

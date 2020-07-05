@@ -9,10 +9,10 @@ class Order
   belongs_to :restaurant
 
   def item
-    Item.find(id: self.item_ids[0])
+    Item.find(id: item_ids[0])
   end
 
   def time_slot
-    TimeSlot.find(id: self.time_slot_id)
+    TimeSlot.find(id: time_slot_id)
   end
 end
