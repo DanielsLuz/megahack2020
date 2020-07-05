@@ -8,8 +8,8 @@ class Order
 
   belongs_to :restaurant
 
-  def item
-    Item.find(id: item_ids[0])
+  def items
+    item_ids.map { |item_id| Item.find(item_id) }
   end
 
   def time_slot
