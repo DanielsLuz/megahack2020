@@ -1,6 +1,6 @@
 <div class="flex flex-col h-full overflow-auto p-5">
   <% @restaurants.each do |restaurant| %>
-    <%= link_to restaurant_menu_path(restaurant[:id], params: { time_slot: params[:time_slot] }), 
+    <%= link_to restaurant_menu_path(restaurant[:id], params: { time_slot_id: params[:time_slot_id] }),
                 class: "card my-3 bg-#{restaurant[:color]}-400" do %>
       <div class="mb-8">
         <div class="text-gray-900 font-bold text-xl mb-2">

@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params
-      .permit(:time_slot, :restaurant_id, :phone_number)
+      .permit(:time_slot_id, :restaurant_id, :phone_number)
       .merge(item_ids: [params[:item_id]])
   end
 end

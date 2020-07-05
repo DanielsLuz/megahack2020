@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      <%= form_tag orders_path(params: { item_id: item[:id], restaurant_id: @restaurant_id, time_slot: params[:time_slot] }),
+      <%= form_tag orders_path(params: { item_id: item[:id], restaurant_id: @restaurant_id, time_slot_id: params[:time_slot_id] }),
             class: "",
             method: :post do %>
         <input class="form-input phone-number"

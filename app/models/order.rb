@@ -1,7 +1,7 @@
 class Order
   include Mongoid::Document
 
-  field :time_slot, type: String
+  field :time_slot_id, type: String
   field :item_ids, type: Array
   field :phone_number, type: String
 
@@ -9,5 +9,9 @@ class Order
 
   def item
     Item.find(id: self.item_ids[0])
+  end
+
+  def time_slot
+    TimeSlot.find(id: self.time_slot_id)
   end
 end
