@@ -17,6 +17,15 @@
     <%= f.text_field :code, class: 'form-input w-full' %>
   </div>
 
+  <div class="md:flex md:items-center mb-6">
+    <label
+      for="restaurant_code"
+      class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4 inline">
+      Cor
+    </label>
+    <%= f.select :color, [["Azul", "blue"], ["Vermelho", "red"]], {}, class: 'form-input w-full' %>
+  </div>
+
   <div class="md:flex md:items-center">
     <%= f.submit 'Salvar', class: 'w-full form-button bg-blue-600 hover:bg-blue-500
       focus:shadow-outline' %>
