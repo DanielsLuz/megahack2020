@@ -1,6 +1,8 @@
 class OwnersController < ApplicationController
-  before_action :set_owner, only: %i[show edit update create_restaurant edit_restaurant update_restaurant]
-  before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant update_restaurant]
+  before_action :set_owner, only: %i[show edit update create_restaurant edit_restaurant
+                                  update_restaurant destroy_restaurant]
+  before_action :set_restaurant, only: %i[show_restaurant edit_restaurant update_restaurant
+                                  destroy_restaurant]
 
   def show
   end
@@ -48,6 +50,11 @@ class OwnersController < ApplicationController
     end
   end
 
+  def destroy_restaurant
+    @restaurant.destroy
+    redirect_to owner_path(@owner), notice: 'Restaurante removido com sucesso'
+  end
+
   def time_slots
     @free_time_slots = FREE_TIME_SLOTS
   end
@@ -61,7 +68,7 @@ class OwnersController < ApplicationController
                                   :reservations_end_time)
   end
 
-  private def set_owner_restaurant
+  private def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 
