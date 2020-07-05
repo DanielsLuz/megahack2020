@@ -1,7 +1,7 @@
 class OwnersController < ApplicationController
   before_action :set_owner, only: %i[show edit update create_restaurant edit_restaurant
                                   update_restaurant destroy_restaurant]
-  before_action :set_owner_restaurant, only: %i[show_restaurant edit_restaurant update_restaurant
+  before_action :set_restaurant, only: %i[show_restaurant edit_restaurant update_restaurant
                                   destroy_restaurant]
 
   def show
@@ -68,7 +68,7 @@ class OwnersController < ApplicationController
                                   :reservations_end_time)
   end
 
-  private def set_owner_restaurant
+  private def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
 
