@@ -1,5 +1,6 @@
 Order.destroy_all
 Owner.destroy_all
+TimeSlot.destroy_all
 
 owner = Owner.create(
   name: 'Shawee Shopping',
