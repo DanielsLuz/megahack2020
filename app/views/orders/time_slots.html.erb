@@ -1,4 +1,11 @@
 <% if @existing_orders.present? %>
+  <div class="p-5 bg-green-500 text-white">
+    <p>Você pode cancelar sua reserva até 15 minutos antes do horário agendado.</p>
+    <p>Tempo até sua próxima reserva:
+      <!-- This should be based on the next order of current client -->
+      <span id="time_until_next_order" data-user-next-order=<%= @next_order_time %>></span>
+    </p>
+  </div>
   <div class="p-8 bg-green-600">
     <div class="text-white text-lg font-bold mb-3">
       Pedidos em andamento
@@ -26,13 +33,6 @@
         </div>
       <% end %>
     </div>
-  </div>
-  <div class="p-5 bg-green-500 text-white">
-    <p>Você pode cancelar sua reserva até 15 minutos antes do horário agendado.</p>
-    <p>Tempo até sua próxima reserva:
-      <!-- This should be based on the next order of current client -->
-      <span id="time_until_next_order" data-user-next-order=<%= @next_order_time %>></span>
-    </p>
   </div>
 <% end %>
 
