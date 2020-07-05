@@ -27,5 +27,5 @@ Rails.application.routes.draw do
     put 'complete'
   end
 
-  root to: 'welcome#index'
+  root to: 'welcome#splash'
 end

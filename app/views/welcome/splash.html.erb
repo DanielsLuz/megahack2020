@@ -1,4 +1,5 @@
 <div id="splash-screen" class="fixed top-0 left-0 wrapper items-center justify-center h-screen w-screen flex bg-blue-600 text-white font-semibold">
+  <%= hidden_field_tag :home_link, time_slots_orders_path %>
   <div class="inner-wrapper w-50 flex flex-col">
     <div class="text-3xl text-center">Desaglomera</div>
     <div class="lines-wrapper flex items-center justify-center">
@@ -9,10 +10,10 @@
       <div class="line side-line"></div>
     </div>
   </div>
-
 <script>
+var homeLink = document.getElementById('home_link')
 var wrapper = document.getElementById('splash-screen')
-anime.timeline({loop: false, complete: () => wrapper.parentNode.removeChild(wrapper)})
+anime.timeline({loop: false, complete: () => window.location.replace(homeLink.value)})
   .add({
     targets: document.querySelectorAll('.inner-wrapper'),
     opacity: [0,1],
