@@ -11,7 +11,7 @@
   </div>
 
 <script>
-const wrapper = document.getElementById('splash-screen')
+var wrapper = document.getElementById('splash-screen')
 anime.timeline({loop: false, complete: () => wrapper.parentNode.removeChild(wrapper)})
   .add({
     targets: document.querySelectorAll('.inner-wrapper'),
