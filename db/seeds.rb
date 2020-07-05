@@ -3,8 +3,8 @@ Owner.destroy_all
 
 owner = Owner.create(
   name: 'Shawee Shopping',
-  usable_tables_count: 15,
-  reservations_start_time: '08:00',
+  usable_tables_count: 2,
+  reservations_start_time: '10:00',
   reservations_end_time: '20:00',
   restaurants: [
     Restaurant.create(
@@ -66,12 +66,12 @@ owner = Owner.create(
   ]
 )
 
-total_capacity = owner.slots_quantity
+total_capacity = owner.usable_tables_count
 owner.reservation_hours.each do |start_time|
   TimeSlot.create!(
     start_time: start_time,
     total_capacity: total_capacity,
-    current_usage: total_capacity,
+    current_usage: 0,
     owner: owner
   )
 end
