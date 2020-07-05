@@ -1,0 +1,34 @@
+<%= form_tag orders_path(params: { restaurant_id: @restaurant_id, time_slot_id: params[:time_slot_id] }),
+             method: :post, class: 'w-full md:max-w-sm' do %>
+  <div class="p-8 bg-green-600">
+    <div class="text-white text-lg font-bold mb-3">
+      Meus Pedidos
+    </div>
+
+    <div class="mb-3">
+      <% @cart.each do |item| %>
+        <li class="text-white">
+          <%= hidden_field nil, :"items[]", value: item["_id"].values[0] %>
+          <%= item["name"] %> <span class="text-gray-300">x 1</span>
+        </li>
+      <% end %>
+    </div>
+
+    <div class="text-white text-lg font-bold mb-3">
+      Checkout
+    </div>
+
+    <div class="grid p-4 rounded bg-white text-sm">
+      <label for="phone_number" class="text-green-600 mb-2">
+        Nº de celular
+      </label>
+      <input class="bg-gray-100 form-input mb-2"
+             name="phone_number"
+             type="text"
+             id="phone_number">
+      <button type="submit" class="form-button bg-green-600 hover:bg-green-500">
+        Enviar pedido
+      </button>
+    </div>
+  </div>
+<% end %>

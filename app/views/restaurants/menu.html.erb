@@ -1,69 +1,36 @@
-<% if @cart.present? %>
-  <%= form_tag orders_path(params: { restaurant_id: @restaurant_id, time_slot_id: params[:time_slot_id] }),
-              method: :post do %>
-    <div class="p-8 bg-green-600">
-      <div class="text-white text-lg font-bold mb-3">
-        Meu Pedido
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-3">
-        <% @cart.each do |item| %>
-          <%= hidden_field nil, :"items[]", value: item["_id"].values[0] %>
-          <div class="bg-white rounded-lg p-6">
-            <h2 class="text-lg"><%= item["name"] %> x 1</h2>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="text-white text-lg font-bold mb-3">
-        Checkout
-      </div>
-
-      <div class="card flex-col bg-white text-sm my-2">
-        <div class="my-2 flex flex-col">
-          <label for="phone_number" class="font-semibold text-white text-green-600">
-            Nº de celular
-          </label>
-          <input class="bg-gray-100 outline-none appearance-none border-2 border-gray-200 rounded h-8 px-2 leading-tight my-2 phone-number w-full md:w-1/2 focus:border-green-500"
-                  name="phone_number"
-                  type="text"
-                  id="phone_number">
-          <button type="submit" class="form-button col-span-2 w-full bg-green-600 hover:bg-green-500">
-            Enviar pedido
-          </button>
-        </div>
-      </div>
-    </div>
+<div class="flex flex-col md:flex-row md:flex-row-reverse">
+  <% if @cart.present? %>
+    <%= render 'cart' %>
   <% end %>
-<% end %>
 
-<div class="p-8 ">
-  <div class="text-white text-lg font-bold mb-3">
-    Cardárpio
-  </div>
-  <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-    <% @menu.each do |item| %>
-      <div class='card flex-col bg-gray-300 text-sm my-2'>
-        <div>
-          <div class="mb-1">
-            <div class="text-gray-900 font-bold"><%= item.name %></div>
+  <div class="p-6">
+    <div class="text-white text-lg font-bold mb-3">
+      Cardárpio
+    </div>
+    <div class="grid gap-2 lg:grid-cols-2">
+      <% @menu.each do |item| %>
+        <div class='card flex-col bg-gray-300 text-sm my-2'>
+          <div>
+            <div class="mb-1">
+              <div class="text-gray-900 font-bold"><%= item.name %></div>
+            </div>
+            <div class="mb-2">
+              <div class="text-gray-800"><%= item.description %></div>
+            </div>
+            <div class="mb-2">
+              <div class="text-green-800 font-bold"><%= number_to_currency(item.value, unit: 'R$', format: "%u %n") %></div>
+            </div>
           </div>
-          <div class="mb-2">
-            <div class="text-gray-800"><%= item.description %></div>
-          </div>
-          <div class="mb-2">
-            <div class="text-green-800 font-bold"><%= number_to_currency(item.value, unit: 'R$', format: "%u %n") %></div>
-          </div>
+
+          <%= form_tag cart_add_item_path(params: { item_id: item.id, restaurant_id: @restaurant_id, time_slot_id: params[:time_slot_id] }),
+                method: :patch do %>
+            <button type="submit" class="form-button col-span-2 w-full bg-green-600 hover:bg-green-500">
+              Adicionar no carrinho
+            </button>
+          <% end %>
         </div>
-
-        <%= form_tag cart_add_item_path(params: { item_id: item.id, restaurant_id: @restaurant_id, time_slot_id: params[:time_slot_id] }),
-              method: :patch do %>
-          <button type="submit" class="form-button col-span-2 w-full bg-green-600 hover:bg-green-500">
-            Adicionar no carrinho
-          </button>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
