@@ -1,4 +1,4 @@
-<div class="py-5">
+<div class="p-2 grid gap-1">
   <% @menu.each do |item| %>
     <div class='card flex-col items-center items-stretch border-solid border-b border-gray-500 bg-gray-300 text-sm'>
       <div>
@@ -13,12 +13,25 @@
         </div>
       </div>
 
-      <%= link_to orders_path(params: { item_id: item[:id], restaurant_id: @restaurant_id, time_slot: params[:time_slot] }),
-            class: "shadow bg-green-500 hover:bg-green-400 focus:shadow-outline
-                    focus:outline-none text-white font-bold py-2 px-4 rounded",
+      <%= form_tag orders_path(params: { item_id: item[:id], restaurant_id: @restaurant_id, time_slot: params[:time_slot] }),
+            class: "",
             method: :post do %>
+        <input class="form-input phone-number"
+               name="phone_number"
+               type="text">
+        <button type="submit"
+                class="text-white bg-green-500 hover:bg-green-400
+                       focus:shadow-outline focus:outline-none font-bold py-2 px-4
+                       rounded">
           Comprar
+        </button>
       <% end %>
     </div>
   <% end %>
 </div>
+
+<script>
+document.querySelectorAll('.phone-number').forEach(el => {
+  IMask(el, { mask: '+{55} (00) 00000-0000' });
+})
+</script>
