@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  def index
-    @owner = Owner.first
+  def splash
   end
 end

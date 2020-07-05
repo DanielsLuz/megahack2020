@@ -1,0 +1,3 @@
+notification_job:
+  cron: "15,45 * * * *"
+  class: "NotificationsWorker"

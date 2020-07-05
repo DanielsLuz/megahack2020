@@ -21,6 +21,12 @@ class OrdersController < ApplicationController
     @orders = [] # @restaurant.orders
   end
 
+  def destroy
+    order = Order.find(params[:id])
+    order.destroy
+    redirect_to time_slots_orders_path, notice: 'Reserva desfeita com sucesso'
+  end
+
   def time_slots
     lookup_orders
     @free_time_slots = Owner.first.time_slots
@@ -38,6 +44,7 @@ class OrdersController < ApplicationController
   def lookup_orders
     if (phone_number = cookies[:phone_number])
       @existing_orders = Order.where(phone_number: phone_number, completed: false)
+      @next_order_time = @existing_orders.map(&:time_slot).min { |time_slot| time_slot.start_time }
     end
   end
 

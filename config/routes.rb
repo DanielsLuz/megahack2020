@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   post 'owners/tables', to: 'owners#tables_create'
 
-  resources :orders, only: [:index, :show, :create, :update] do
+  resources :orders, only: [:index, :show, :create, :update, :destroy] do
     get 'time_slots', on: :collection
     put 'complete'
   end
@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   patch "carts" => "carts#add_item", as: :cart_add_item
 
-  root to: 'welcome#index'
+  root to: 'welcome#splash'
 end
