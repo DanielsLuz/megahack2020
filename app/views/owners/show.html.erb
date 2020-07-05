@@ -33,8 +33,9 @@
             <td><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
             <td><%= restaurant.code %></td>
             <td>
-              <%= link_to 'Remover restaurante',
-                owner_restaurant_url(owner_id: @owner.id, id: restaurant.id),
+              <%= link_to 'Editar', owner_edit_restaurant_path(owner_id: @owner.id, id: restaurant.id) %>  |
+              <%= link_to 'Remover',
+                owner_restaurant_path(owner_id: @owner.id, id: restaurant.id),
                 method: :delete,
                 data: {
                   toggle: 'tooltip',
