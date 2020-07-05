@@ -1,7 +1,13 @@
-<div class="flex flex-col h-screen bg-blue-200">
-  <h1>Editar Restaurante <%= @restaurant.name %></h1>
+<div class="flex h-full justify-center items-center bg-blue-600">
+  <div class="bg-gray-300 p-12 rounded">
+    <div class="md:flex md:items-center mb-6 font-medium">
+      Editar Restaurante <%= @restaurant.name %>
+    </div>
 
-  <%= render 'restaurant_form', { owner: @owner, restaurant: @restaurant } %>
-
-  <%= link_to 'Voltar', owner_path(@restaurant.owner) %>
+    <%= render 'restaurant_form', { owner: @owner, restaurant: @restaurant } %>
+    <div class="md:flex md:items-center mb-6 font-medium mt-1">
+      <%= link_to 'Voltar', owner_path(@owner),
+        class: 'w-full form-button bg-gray-600 hover:bg-gray-500 focus:shadow-outline text-center' %>
+    </div>
+  </div>
 </div>
