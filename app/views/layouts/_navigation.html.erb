@@ -5,7 +5,7 @@
     </span>
   </div>
   <div class="block lg:hidden">
-    <button id="menu-button" class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+    <button id="menu-button" class="flex items-center px-3 py-2 border rounded text-blue-200 border-blue-400 hover:text-white hover:border-white">
       <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <title>Menu</title>
         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
@@ -14,14 +14,14 @@
   </div>
   <div id="menu-items" class="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
-      <%= link_to time_slots_orders_path, class: 'block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' do %>
+      <%= link_to time_slots_orders_path, class: 'block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4' do %>
         Fazer um pedido
       <% end %>
-      <%= link_to restaurants_code_path, class: 'block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' do %>
+      <%= link_to restaurants_code_path, class: 'block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4' do %>
         Acesso do atendente
       <% end %>
 
-      <%= link_to owner_path(Owner.first), class: 'block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4' do %>
+      <%= link_to owner_path(Owner.first), class: 'block mt-4 lg:inline-block lg:mt-0 text-blue-200 hover:text-white mr-4' do %>
         Gestão
       <% end %>
     </div>
