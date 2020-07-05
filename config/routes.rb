@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+  namespace 'restaurants' do
+    get 'code'
+    post 'check_code'
+  end
+
   resources :restaurants, only: [:index, :show] do
     resources :items, only: [:new, :create]
     get 'menu'
     get 'orders'
-  end
-
-  namespace 'restaurants' do
-    get 'code'
-    post 'check_code'
   end
 
   resources :owners, only: [:show, :create, :edit, :update] do
