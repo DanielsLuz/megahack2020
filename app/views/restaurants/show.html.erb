@@ -1,33 +1,43 @@
-<div class="h-full w-full bg-blue-600 flex flex-col items-center justify-center">
-  <div class="bg-gray-100 md:w-1/2 w-full rounded p-4">
+<div class="grid md:grid-cols-1">
+  <div class="w-full bg-gray-100 p-6 text-gray-600">
     <div>
-      <%= link_to restaurant_orders_path(@restaurant.id) do %>
-        <div class="w-auto form-button bg-green-600 hover:bg-green-500 mb-4">
-          Ver pedidos
-        </div>
-      <% end %>
+      Estabelecimento
     </div>
-
-    <div class="border border-gray-600 rounded mb-4"></div>
-
-    <div>
-      <h6 class="font-bold text-xl mb-2">Produtos</h6>
-
-      <%- @restaurant.items.each do |item| %>
-        <div class="bg-gray-300 p-4 mb-4 shadow-md">
-          <%= item.name %>
-          <div class="float-right inline-block">
-            R$ <%= sprintf("%.2f", item.value) %>
-          </div>
-        </div>
-      <% end %>
-
-      <%= link_to new_restaurant_item_path(@restaurant.id) do %>
-        <div class="w-auto font-bold shadow bg-blue-600 hover:bg-blue-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-          Cadastrar novo item
-        </div>
-      <% end %>
+    <div class="text-xl text-black">
+      <%= @restaurant.name %>
     </div>
+    <div class="text-sm">
+      Descrição: <span class="text-black"><%= @restaurant.description %></span>
+    </div>
+  </div>
 
+  <%= link_to restaurant_orders_path(@restaurant.id) do %>
+    <div class="w-auto form-button bg-green-600 hover:bg-green-500">
+      Ver pedidos
+    </div>
+  <% end %>
+
+  <div class="w-full p-6 bg-gray-200">
+    <div class="text-black font-bold">
+      <div>Produtos cadastrados</div>
+      <%= link_to '+ Cadastrar produto', new_restaurant_item_path(@restaurant.id),
+        class: 'w-full text-blue-600 hover:text-blue-500 underline' %>
+    </div>
+    <table class="table-auto w-full">
+      <thead>
+        <tr class="text-gray-700">
+          <th class="px-4 py-2 text-left">Produto</th>
+          <th class="px-4 py-2 text-left">Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @restaurant.items.each_with_index do |item, index| %>
+          <tr class="<%= (index % 2 == 0) ? 'bg-gray-300' : ''%>">
+            <td class="border px-4 py-2"><%= item.name %></td>
+            <td class="border px-4 py-2"><%= number_to_currency(item.value.to_f/100, unit: 'R$', format: "%u %n") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

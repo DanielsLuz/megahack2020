@@ -26,9 +26,9 @@
     <table class="table-auto w-full">
       <thead>
         <tr class="text-gray-700">
-          <th class="px-4 py-2">Nome</th>
-          <th class="px-4 py-2">Código de acesso</th>
-          <th class="px-4 py-2">Ações</th>
+          <th class="text-left px-4 py-2">Nome</th>
+          <th class="text-left px-4 py-2">Código de acesso</th>
+          <th class="text-right px-4 py-2">Ações</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +36,7 @@
           <tr class="<%= (index % 2 == 0) ? 'bg-gray-300' : ''%>">
             <td class="border px-4 py-2"><%= link_to restaurant.name, owner_restaurant_path(owner_id: @owner.id, id: restaurant.id) %></td>
             <td class="border px-4 py-2"><%= restaurant.code %></td>
-            <td class="border px-4 py-2 text-center">
+            <td class="border px-4 py-2 text-right">
               <%= link_to 'Editar', owner_edit_restaurant_path(owner_id: @owner.id, id: restaurant.id), class: 'text-gray-600' %>
               <%= link_to 'Remover',
                 owner_restaurant_path(owner_id: @owner.id, id: restaurant.id),
