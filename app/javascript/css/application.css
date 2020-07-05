@@ -19,3 +19,11 @@
   border-color: theme('colors.blue.500');
   outline: none;
 }
+
+.form-button {
+  @apply font-bold shadow text-white font-bold py-2 px-4 rounded;
+}
+
+.form-button:focus {
+  outline: 0;
+}
