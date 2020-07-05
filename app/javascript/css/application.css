@@ -31,3 +31,7 @@
 .restaurant-color-select.color-selected {
   @apply border-gray-600;
 }
+
+.badge {
+  @apply flex items-center justify-center h-6 w-6 rounded-full;
+}

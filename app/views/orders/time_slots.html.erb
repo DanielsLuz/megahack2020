@@ -23,21 +23,27 @@
     <% @free_time_slots.each do |time_slot| %>
       <% if time_slot.available? %>
         <%= link_to restaurants_path(params: { time_slot_id: time_slot }),
-          class: 'card bg-gray-300 hover:bg-blue-300' do %>
+          class: 'card bg-gray-300 hover:bg-gray-200 items-center' do %>
           <div class="font-bold">
             <%= time_slot.to_s %>
           </div>
-          <div class="font-bold info-circle bg-blue-600">
-            <%= time_slot.available_tables_count %>
+          <div class="flex items-center text-sm">
+            <div class="text-xs text-right text-gray-700">Mesas<br>disponíveis</div>
+            <div class="badge bg-blue-600 text-white ml-2">
+              <%= time_slot.available_tables_count %>
+            </div>
           </div>
         <% end %>
       <% else %>
-        <div class="card bg-gray-500">
-          <div class="font-bold">
+        <div class="card bg-gray-500 items-center">
+          <div class="font-bold text-gray-700">
             <%= time_slot.to_s %>
           </div>
-          <div class="font-bold info-circle bg-gray-600">
-            <%= time_slot.available_tables_count %>
+          <div class="flex items-center text-sm">
+            <div class="text-xs text-right text-gray-700">Mesas<br>disponíveis</div>
+            <div class="badge bg-gray-600 text-white ml-2">
+              <%= time_slot.available_tables_count %>
+            </div>
           </div>
         </div>
       <% end %>
