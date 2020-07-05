@@ -1,71 +1,59 @@
-<div class="flex flex-col h-screen bg-blue-200">
-  <h1>Perfil</h1>
-
-  <%= form_with model: @owner, class: 'px-3 flex flex-col md:flex-row items-center w-full my-5' do |f| %>
-    <div>
-      <label for="owner_name" class="text-gray-700 text-base">
-        Nome
-      </label>
-      <div class="m-5 md:my-0">
-        <%= f.text_field :name, class: 'bg-gray-200 appearance-none border-2 border-gray-200
-                      rounded w-full py-2 px-4 text-gray-700 leading-tight
-                      border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500' %>
-      </div>
+<div class="flex h-full justify-center items-center bg-blue-600">
+  <div class="bg-gray-300 p-12 rounded">
+    <div class="md:flex md:items-center mb-6 font-medium">
+      Perfil
     </div>
 
-    <div>
-      <label for="owner_usable_tables_count" class="text-gray-700 text-base">
-        Quantidade de mesas disponíveis
-      </label>
-      <div class="m-5 md:my-0">
-        <%= f.number_field :usable_tables_count, class: 'bg-gray-200 appearance-none border-2
-                      border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight
-                      border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500' %>
+    <%= form_with model: @owner do |f| %>
+      <div class="md:flex md:items-center mb-6">
+        <label for="owner_name" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Nome
+        </label>
+        <div class="m-5 md:my-0">
+          <%= f.text_field :name, class: 'form-input w-full' %>
+        </div>
       </div>
-    </div>
 
-    <div>
-      <label for="owner_reservations_start_time" class="text-gray-700 text-base">
-        Horário de abertura das reservas
-      </label>
-      <div class="m-5 md:my-0">
-        <input class="bg-gray-200 appearance-none border-2 border-gray-200
-                      rounded w-full py-2 px-4 text-gray-700 leading-tight
-                      border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500"
-              id="owner_reservations_end_time"
+      <div class="md:flex md:items-center mb-6">
+        <label for="owner_usable_tables_count" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Quantidade de mesas disponíveis
+        </label>
+        <div class="m-5 md:my-0">
+          <%= f.number_field :usable_tables_count, class: 'form-input w-full' %>
+        </div>
+      </div>
+
+      <div class="md:flex md:items-center mb-6">
+        <label for="owner_reservations_start_time" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Horário de abertura das reservas
+        </label>
+        <input class="form-input w-full"
+              id="owner_reservations_start_time"
               name="owner[reservations_start_time]"
               value="<%= @owner.reservations_start_time %>"
               type="time">
       </div>
-    </div>
 
-    <div>
-      <label for="owner_reservations_end_time" class="text-gray-700 text-base">
-        Horário de fechamento das reservas
-      </label>
-      <div class="m-5 md:my-0">
-        <input class="bg-gray-200 appearance-none border-2 border-gray-200
-                      rounded w-full py-2 px-4 text-gray-700 leading-tight
-                      border-blue-300 focus:outline-none focus:bg-white
-                      focus:border-blue-500"
+      <div class="md:flex md:items-center mb-6">
+        <label for="owner_reservations_end_time" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+          Horário de fechamento das reservas
+        </label>
+        <input class="form-input w-full"
               id="owner_reservations_end_time"
               name="owner[reservations_end_time]"
               value="<%= @owner.reservations_end_time %>"
               type="time">
       </div>
-    </div>
 
-    <div>
-      <%= f.submit 'Salvar',
-        class: 'shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none
-                text-white font-bold py-2 px-4 rounded' %>
-      <%= link_to 'Voltar',
-        owner_path(@owner),
-        class: 'shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none
-                text-white font-bold py-2 px-4 rounded' %>
-    </div>
-  <% end %>
+      <div class="md:flex md:items-center">
+        <%= f.submit 'Salvar',
+          class: 'w-full form-button bg-blue-600 hover:bg-blue-500 focus:shadow-outline' %>
+      </div>
+
+      <div class="md:flex md:items-center mt-2">
+        <%= link_to 'Voltar', owner_path(@owner),
+          class: 'w-full form-button bg-gray-600 hover:bg-gray-500 focus:shadow-outline text-center' %>
+      </div>
+    <% end %>
+  </div>
 </div>
