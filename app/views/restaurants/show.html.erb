@@ -34,7 +34,7 @@
         <% @restaurant.items.each_with_index do |item, index| %>
           <tr class="<%= (index % 2 == 0) ? 'bg-gray-300' : ''%>">
             <td class="border px-4 py-2"><%= item.name %></td>
-            <td class="border px-4 py-2"><%= number_to_currency(item.value.to_f/100, unit: 'R$', format: "%u %n") %></td>
+            <td class="border px-4 py-2"><%= number_to_currency(item.value.to_f, unit: 'R$', format: "%u %n") %></td>
           </tr>
         <% end %>
       </tbody>
