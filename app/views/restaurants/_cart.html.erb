@@ -22,7 +22,7 @@
       <label for="phone_number" class="text-green-600 mb-2">
         Nº de celular
       </label>
-      <input class="bg-gray-100 form-input mb-2"
+      <input class="bg-gray-100 form-input mb-2 phone-number"
              name="phone_number"
              type="text"
              id="phone_number">
@@ -32,3 +32,9 @@
     </div>
   </div>
 <% end %>
+
+<script>
+document.querySelectorAll('.phone-number').forEach(el => {
+  IMask(el, { mask: '+{55} (00) 00000-0000' });
+})
+</script>
